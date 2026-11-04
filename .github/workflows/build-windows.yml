@@ -1,0 +1,104 @@
+name: Build Windows
+
+on:
+  push:
+    paths: ['omnitool/**']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read compatibility.json
+        id: compat
+        shell: bash
+        run: |
+          echo "horizon_rev=$(jq -r .horizon_revision omnitool/compatibility.json)" >> "$GITHUB_OUTPUT"
+          echo "mixins_rev=$(jq -r .horizon_mixins_revision omnitool/compatibility.json)" >> "$GITHUB_OUTPUT"
+          echo "mixins_repo=$(jq -r .horizon_mixins_repository omnitool/compatibility.json)" >> "$GITHUB_OUTPUT"
+          echo "horizon_repo=$(jq -r .horizon_repository omnitool/compatibility.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            build/cargo
+          key: windows-cargo-${{ steps.compat.outputs.horizon_rev }}-${{ hashFiles('omnitool/**/*.rs') }}
+          restore-keys: windows-cargo-${{ steps.compat.outputs.horizon_rev }}-
+
+      - name: Download Horizon source
+        shell: bash
+        run: |
+          REV="${{ steps.compat.outputs.horizon_rev }}"
+          REPO="${{ steps.compat.outputs.horizon_repo }}"
+          mkdir -p build/horizon
+          curl -sL "${REPO}/archive/${REV}.tar.gz" | tar xz -C build/horizon
+          mv build/horizon/horizon-*/* build/horizon/
+          # Remove symlinks (horizon-mixins refuses them)
+          find build/horizon -type l -delete
+
+      - name: Install horizon-mixins
+        shell: bash
+        run: |
+          cargo install --locked --quiet \
+            --git "${{ steps.compat.outputs.mixins_repo }}" \
+            --rev "${{ steps.compat.outputs.mixins_rev }}" \
+            --root build/tools \
+            horizon-mixins-cli
+
+      - name: Apply mixin
+        shell: bash
+        run: |
+          REV="${{ steps.compat.outputs.horizon_rev }}"
+          # Pin the mixin toml to the horizon revision
+          mkdir -p build/mods/omnitool
+          cp -r omnitool/mixins/omnitool/* build/mods/omnitool/
+          sed -i "s/horizon_revision = \"[0-9a-f]*\"/horizon_revision = \"${REV}\"/" \
+            build/mods/omnitool/horizon-mixin.toml
+          # Apply
+          build/tools/bin/horizon-mixins apply \
+            --workspace build/horizon \
+            --mods build/mods \
+            --out build/stage
+
+      - name: Build
+        shell: bash
+        env:
+          CARGO_TARGET_DIR: build/cargo
+          RUSTFLAGS: -D warnings
+        run: |
+          cd build/stage
+          cargo build --locked -p horizon-client --bin horizon-client --bin horizon-ctl --profile fast
+
+      - name: Package
+        shell: bash
+        run: |
+          mkdir -p dist
+          cp build/cargo/fast/horizon-client.exe dist/
+          cp build/cargo/fast/horizon-ctl.exe dist/ 2>/dev/null || true
+          cp omnitool/compatibility.json dist/
+          echo "Built from omnitool-releases $(git rev-parse --short HEAD)" > dist/BUILD.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: omnitool-horizon-windows
+          path: dist/
+
+      - name: Upload to latest release
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd dist
+          zip ../omnitool-horizon-windows-prebuilt.zip *
+          cd ..
+          gh release upload latest omnitool-horizon-windows-prebuilt.zip --clobber || true
