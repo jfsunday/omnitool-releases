@@ -1,0 +1,788 @@
+[mod]
+id = "omnitool"
+version = "0.1.0"
+priority = 100
+
+# The commit it was written against. It is pinned: besides the native hook points
+# it reads private `Game` fields (glue.rs) and injects into private functions,
+# so it only builds on this Horizon commit.
+[compatibility]
+horizon_revision = "1da354b67a509812c4141b67de2affd6de65c342"
+
+# The modules: each file is a module of `game` here and of the Cargo crate
+# (src/lib.rs) under the same name, so `super::omnitool_core` is the same
+# code in both. glue.rs holds the game types and is only here.
+[[module]]
+id = "core"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_core"
+source = "core.rs"
+
+[[module]]
+id = "clickgui"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_clickgui"
+source = "clickgui.rs"
+
+[[module]]
+id = "clickgui_flow"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_clickgui_flow"
+source = "clickgui_flow.rs"
+
+[[module]]
+id = "registry"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_registry"
+source = "registry.rs"
+
+[[module]]
+id = "chat_regex"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_chat_regex"
+source = "chat_regex.rs"
+
+[[module]]
+id = "chat"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_chat"
+source = "chat.rs"
+
+[[module]]
+id = "chat_tweaks"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_chat_tweaks"
+source = "chat_tweaks.rs"
+
+[[module]]
+id = "chat_log"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_chat_log"
+source = "chat_log.rs"
+
+[[module]]
+id = "chat_heads"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_chat_heads"
+source = "chat_heads.rs"
+
+[[module]]
+id = "calc"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_calc"
+source = "calc.rs"
+
+[[module]]
+id = "hud"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_hud"
+source = "hud.rs"
+
+[[module]]
+id = "armor_hud"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_armor_hud"
+source = "armor_hud.rs"
+
+[[module]]
+id = "overlay_layouts"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_overlay_layouts"
+source = "overlay_layouts.rs"
+
+[[module]]
+id = "overlay_entries"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_overlay_entries"
+source = "overlay_entries.rs"
+
+[[module]]
+id = "omni_overlay"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_omni_overlay"
+source = "omni_overlay.rs"
+
+[[module]]
+id = "module_list"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_module_list"
+source = "module_list.rs"
+
+[[module]]
+id = "durability_warning"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_durability_warning"
+source = "durability_warning.rs"
+
+[[module]]
+id = "effect_timers"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_effect_timers"
+source = "effect_timers.rs"
+
+[[module]]
+id = "keystrokes"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_keystrokes"
+source = "keystrokes.rs"
+
+[[module]]
+id = "item_pickups"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_item_pickups"
+source = "item_pickups.rs"
+
+[[module]]
+id = "toggle_sneak"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_toggle_sneak"
+source = "toggle_sneak.rs"
+
+[[module]]
+id = "toggle_sprint"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_toggle_sprint"
+source = "toggle_sprint.rs"
+
+[[module]]
+id = "waypoints"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_waypoints"
+source = "waypoints.rs"
+
+[[module]]
+id = "death_coords"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_death_coords"
+source = "death_coords.rs"
+
+[[module]]
+id = "quick_disconnect"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_quick_disconnect"
+source = "quick_disconnect.rs"
+
+[[module]]
+id = "dynamic_fps"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_dynamic_fps"
+source = "dynamic_fps.rs"
+
+[[module]]
+id = "fullbright"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_fullbright"
+source = "fullbright.rs"
+
+[[module]]
+id = "no_fog"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_no_fog"
+source = "no_fog.rs"
+
+[[module]]
+id = "clear_water"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_clear_water"
+source = "clear_water.rs"
+
+[[module]]
+id = "no_hurt_cam"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_no_hurt_cam"
+source = "no_hurt_cam.rs"
+
+[[module]]
+id = "no_pumpkin_overlay"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_no_pumpkin_overlay"
+source = "no_pumpkin_overlay.rs"
+
+[[module]]
+id = "low_fire"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_low_fire"
+source = "low_fire.rs"
+
+[[module]]
+id = "custom_crosshair"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_custom_crosshair"
+source = "custom_crosshair.rs"
+
+[[module]]
+id = "trading"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_trading"
+source = "trading.rs"
+
+[[module]]
+id = "autoclicker"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_autoclicker"
+source = "autoclicker.rs"
+
+[[module]]
+id = "auto_tool"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_auto_tool"
+source = "auto_tool.rs"
+
+[[module]]
+id = "auto_refill"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_auto_refill"
+source = "auto_refill.rs"
+
+[[module]]
+id = "villager_trades"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_villager_trades"
+source = "villager_trades.rs"
+
+[[module]]
+id = "schematics"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_schematics"
+source = "schematics.rs"
+
+[[module]]
+id = "tps"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_tps"
+source = "tps.rs"
+
+[[module]]
+id = "json"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_json"
+source = "json.rs"
+
+[[module]]
+id = "share"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_share"
+source = "share.rs"
+
+[[module]]
+id = "setting"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_setting"
+source = "setting.rs"
+
+[[module]]
+id = "lang_de"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_lang_de"
+source = "lang_de.rs"
+
+[[module]]
+id = "lang"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_lang"
+source = "lang.rs"
+
+[[module]]
+id = "safe"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_safe"
+source = "safe.rs"
+
+[[module]]
+id = "config"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_config"
+source = "config.rs"
+
+[[module]]
+id = "zoom"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_zoom"
+source = "zoom.rs"
+
+[[module]]
+id = "freecam"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_freecam"
+source = "freecam.rs"
+
+[[module]]
+id = "freelook"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_freelook"
+source = "freelook.rs"
+
+[[module]]
+id = "minimap_cfg"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_minimap_cfg"
+source = "minimap_cfg.rs"
+
+[[module]]
+id = "world_lines"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_world_lines"
+source = "world_lines.rs"
+
+[[module]]
+id = "light_overlay"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_light_overlay"
+source = "light_overlay.rs"
+
+[[module]]
+id = "chunk_borders"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_chunk_borders"
+source = "chunk_borders.rs"
+
+[[module]]
+id = "block_outline"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_block_outline"
+source = "block_outline.rs"
+
+[[module]]
+id = "world_ranges"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_world_ranges"
+source = "world_ranges.rs"
+
+[[module]]
+id = "world_map"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_world_map"
+source = "world_map.rs"
+
+[[module]]
+id = "world_map_screen"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_world_map_screen"
+source = "world_map_screen.rs"
+
+[[module]]
+id = "workflows"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_workflows"
+source = "workflows.rs"
+
+[[module]]
+id = "conditions"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_conditions"
+source = "conditions.rs"
+
+[[module]]
+id = "triggers"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_triggers"
+source = "triggers.rs"
+
+[[module]]
+id = "recorder"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_recorder"
+source = "recorder.rs"
+
+[[module]]
+id = "inventory_plan"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_inventory_plan"
+source = "inventory_plan.rs"
+
+[[module]]
+id = "slot_tweaks"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_slot_tweaks"
+source = "slot_tweaks.rs"
+
+[[module]]
+id = "inventory_sort"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_inventory_sort"
+source = "inventory_sort.rs"
+
+[[module]]
+id = "hotbar_presets"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_hotbar_presets"
+source = "hotbar_presets.rs"
+
+[[module]]
+id = "mouse_tweaks"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_mouse_tweaks"
+source = "mouse_tweaks.rs"
+
+[[module]]
+id = "menu"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_menu"
+source = "menu.rs"
+
+[[module]]
+id = "glue"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_glue"
+source = "glue.rs"
+
+# One helper per hook point; each only calls its dispatcher in glue.rs.
+[[injection]]
+id = "hook_command"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_command"
+helper = "hook_command.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "command", ty = "&str", value = "command" },
+  { name = "ran", ty = "&mut bool", value = "&mut *ran" },
+]
+
+[[injection]]
+id = "hook_list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "hook_list.rs"
+bindings = [
+  { name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" },
+]
+
+[[injection]]
+id = "hook_settings"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings"
+helper = "hook_settings.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "buttons", ty = "&mut Vec<String>", value = "&mut *buttons" },
+]
+
+[[injection]]
+id = "hook_click"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_settings_click"
+helper = "hook_click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "button", ty = "usize", value = "button" },
+]
+
+[[injection]]
+id = "hook_tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "hook_tick.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "hook_key"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_key"
+helper = "hook_key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "hook_panel_event"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_panel_event"
+helper = "hook_panel_event.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "mod_id", ty = "&str", value = "mod_id" },
+  { name = "event", ty = "&crate::game::native_hooks::NativePanelEvent", value = "event" },
+]
+
+[[injection]]
+id = "hook_wheel"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_wheel"
+helper = "hook_wheel.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "steps", ty = "f32", value = "steps" },
+  { name = "claimed", ty = "&mut bool", value = "&mut *claimed" },
+]
+
+[[injection]]
+id = "hook_zoom"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_zoom"
+helper = "hook_zoom.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "zoom", ty = "&mut Option<crate::game::native_hooks::NativeZoom>", value = "&mut *zoom" },
+]
+
+[[injection]]
+id = "hook_minimap"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_minimap"
+helper = "hook_minimap.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "minimap", ty = "&mut Option<crate::game::native_hooks::NativeMinimap>", value = "&mut *minimap" },
+]
+
+[[injection]]
+id = "hook_hud"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_hud"
+helper = "hook_hud.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+  { name = "corners", ty = "&mut horizon_client::extras_hud::Corners", value = "&mut *corners" },
+]
+
+[[injection]]
+id = "hook_set_time"
+kind = "HEAD"
+target = "horizon_client::game::remote::Game<'_>::remote_clock_tick"
+helper = "hook_set_time.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+# Render tweaks. The fog and the camera overlays are changed after the original
+# ran: HEAD with a guard and Break, because setup_fog / frame_fog / screen_quads
+# hold closures or macros that RETURN cannot cross (screen_quads even a macro,
+# so the hook sits in ScreenEffects::build in the render crate).
+[[injection]]
+id = "hook_fog"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::render_tick::Game<'_>::frame_fog"
+helper = "hook_fog.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "camera", ty = "glam::DVec3", value = "camera" },
+  { name = "sky", ty = "&horizon_client::environment::Sky", value = "sky" },
+  { name = "biome", ty = "u16", value = "biome" },
+  { name = "water_fog_color", ty = "[f32; 3]", value = "water_fog_color" },
+]
+
+[[injection]]
+id = "hook_quads"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_render::screen_effects::ScreenEffects::build"
+helper = "hook_quads.rs"
+bindings = [
+  { name = "this", ty = "&ScreenEffects", value = "&*self" },
+  { name = "input", ty = "&ScreenInputs", value = "input" },
+]
+
+[[injection]]
+id = "hook_crosshair"
+kind = "RETURN"
+target = "horizon_client_render::hud_layout::crosshair"
+helper = "hook_crosshair.rs"
+bindings = [
+  { name = "value", ty = "Vec<GuiDraw>", value = "$value" },
+]
+
+[[injection]]
+id = "hook_hurt_tilt"
+kind = "MODIFY_ARG"
+target = "horizon_client_render::camera::bob_matrix"
+selector = "bob_hurt"
+require = 1
+ordinal = 0
+argument = 1
+helper = "hook_hurt_tilt.rs"
+bindings = [
+  { name = "value", ty = "f64", value = "$value" },
+]
+
+[[injection]]
+id = "hook_hurt_bob"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client_render::camera::bob_view"
+helper = "hook_hurt_bob.rs"
+bindings = [
+  { name = "state", ty = "&BobState", value = "state" },
+]
+
+# Lives in horizon-client-render so the camera-overlay hook there can read it;
+# glue.rs fills it through `horizon_client::screen_effects::omnitool_bridge`.
+[[module]]
+id = "render_bridge"
+file = "crates/horizon-client-render/src/screen_effects.rs"
+name = "omnitool_bridge"
+source = "render_bridge.rs"
+visibility = "pub"
+
+[[module]]
+id = "session_stats"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_session_stats"
+source = "session_stats.rs"
+
+[[module]]
+id = "craft_calc"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_craft_calc"
+source = "craft_calc.rs"
+
+[[module]]
+id = "craft_ui"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_craft_ui"
+source = "craft_ui.rs"
+
+[[module]]
+id = "craft_option"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_craft_option"
+source = "craft_option.rs"
+
+[[module]]
+id = "craft_tree"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_craft_tree"
+source = "craft_tree.rs"
+
+[[module]]
+id = "learned_recipes"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_learned_recipes"
+source = "learned_recipes.rs"
+
+[[module]]
+id = "tooltips"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_tooltips"
+source = "tooltips.rs"
+
+[[module]]
+id = "shulker_tooltip"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_shulker_tooltip"
+source = "shulker_tooltip.rs"
+
+[[module]]
+id = "appleskin"
+file = "crates/horizon-client/src/game.rs"
+name = "omnitool_appleskin"
+source = "appleskin.rs"
+
+# stack_tooltip_lines itself cannot be a target: it has closures and macros
+# (format!), which no injection kind but HEAD allows, and HEAD refuses macros
+# too. Its one caller that draws the item tooltip, draw_stack_tooltip_with, has
+# only a closure, so a cancellable HEAD there takes over the drawing (the helper
+# repeats the function's body with the extended lines).
+[[injection]]
+id = "hook_tooltip"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::stations::Game<'_>::draw_stack_tooltip_with"
+helper = "hook_tooltip.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+  { name = "stack", ty = "&horizon_client::items::ItemStack", value = "stack" },
+  { name = "creative", ty = "bool", value = "creative" },
+  { name = "x", ty = "f32", value = "x" },
+  { name = "y", ty = "f32", value = "y" },
+  { name = "after_name", ty = "&Vec<(horizon_client::text::Text, u32)>", value = "&after_name" },
+]
+
+# World lines (docs/ARCHITECTURE.md, "World lines"): `fishing_line` builds
+# the depth-tested gizmo lines of every frame (game.rs:12371, not gated by
+# F3+B/F3+G). The cancellable HEAD runs the original body through a
+# re-entry guard and appends Omnitool's lines (RETURN is not possible: the
+# body has closures).
+[[injection]]
+id = "hook_world_lines"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::fishing::Game<'_>::fishing_line"
+helper = "hook_world_lines.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "alpha", ty = "f64", value = "alpha" },
+  { name = "size", ty = "[u32; 2]", value = "size" },
+]
+
+# Game::chat_line (game/remote.rs:767) is the one place every connection line
+# enters the chat component (whose own `add` lives in horizon-client-render).
+# A cancellable HEAD lets Chat Tweaks hide a line or re-enter chat_line with
+# decorated text (re-entry guard in the glue). The body has no closures.
+[[injection]]
+id = "hook_chat_line"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::remote::Game<'_>::chat_line"
+helper = "hook_chat_line.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "content", ty = "&horizon_client::text::Text", value = "&content" },
+  { name = "source", ty = "horizon_client::chat::ChatSource", value = "source" },
+]
+
+# Camera (docs/ARCHITECTURE.md, "Camera"): `turn_player` is `Entity.turn` for
+# the player (mouse, pad, arrow keys, agent). The cancellable HEAD lets
+# Freecam/Freelook take the turn so the player keeps its rotation.
+[[injection]]
+id = "hook_turn_player"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::perspective::Game<'_>::turn_player"
+helper = "hook_turn_player.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "xo", ty = "f64", value = "xo" },
+  { name = "yo", ty = "f64", value = "yo" },
+]
+
+# `camera_view` is `Camera.alignWithEntity` + `getMaxZoom`, once per frame
+# (game.rs:12280). The cancellable HEAD runs the original through a re-entry
+# guard with the camera rotation swapped in (third-person pull-back included)
+# and returns its result (RETURN is not possible: the body has closures).
+[[injection]]
+id = "hook_camera_view"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::perspective::Game<'_>::camera_view"
+helper = "hook_camera_view.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "partial", ty = "f32", value = "partial" },
+]
+
+# `camera_orientation` (`Camera.setRotation`) faces particles, fireworks and
+# name tags toward the camera; it reads the player's rotation otherwise.
+[[injection]]
+id = "hook_camera_orientation"
+kind = "HEAD"
+cancellable = true
+target = "horizon_client::game::Game<'_>::camera_orientation"
+helper = "hook_camera_orientation.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+]
+
+# Omnitool screens (World Map, later ClickGui). Horizon has no screen hook
+# (`enum Screen` is closed) and window_event is full of macros, so the screen
+# stays Screen::Playing with the cursor released (`capture(false)`) and this
+# HEAD on follow_keymap (game.rs:1480, macro-free, called first in
+# window_event with the event by &mut) takes the input while a screen is
+# open: presses, wheel and clicks go to the screen and the event is replaced
+# by a no-op; releases and cursor moves pass on.
+[[injection]]
+id = "hook_window_input"
+kind = "HEAD"
+target = "horizon_client::game::follow_keymap"
+helper = "hook_window_input.rs"
+bindings = [
+  { name = "event", ty = "&mut winit::event::WindowEvent", value = "&mut *event" },
+]
