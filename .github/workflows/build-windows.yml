@@ -74,7 +74,7 @@ jobs:
       - name: Build
         shell: bash
         env:
-          CARGO_TARGET_DIR: build/cargo
+          CARGO_TARGET_DIR: ${{ github.workspace }}/build/cargo
           RUSTFLAGS: -D warnings
         run: |
           cd build/stage
