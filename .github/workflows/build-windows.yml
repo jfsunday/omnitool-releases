@@ -5,6 +5,9 @@ on:
     paths: ['omnitool/**']
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -102,6 +105,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd dist
-          zip ../omnitool-horizon-windows-prebuilt.zip *
+          7z a -tzip ../omnitool-horizon-windows-prebuilt.zip *
           cd ..
-          gh release upload latest omnitool-horizon-windows-prebuilt.zip --clobber || true
+          gh release upload latest omnitool-horizon-windows-prebuilt.zip --clobber
