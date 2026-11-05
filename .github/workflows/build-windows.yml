@@ -98,8 +98,11 @@ jobs:
           name: omnitool-horizon-windows
           path: dist/
 
+      # Off: this build has omnitool but no Voice Chat. The release zip is the combined
+      # Voice Chat + omnitool build, cross-built locally (horizon-svc/mod/package-win.sh).
+      # Upload this one under another name before turning it back on.
       - name: Upload to latest release
-        if: github.ref == 'refs/heads/main'
+        if: false
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
