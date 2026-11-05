@@ -41,6 +41,9 @@ jobs:
           mkdir -p build/horizon
           curl -sL "${REPO}/archive/${REV}.tar.gz" | tar xz -C build/horizon
           mv build/horizon/horizon-*/* build/horizon/
+          # Tarball has no .git; without this horizon-mixins falls back to
+          # `git rev-parse HEAD`, which resolves to this repo's commit
+          echo "$REV" > build/horizon/.horizon-revision
           # Remove symlinks (horizon-mixins refuses them)
           find build/horizon -type l -delete
 
